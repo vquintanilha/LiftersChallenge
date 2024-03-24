@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: deployment-lifters
+  
+spec:
+  selector:
+    matchLabels:
+      app: app-lifters
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app-lifters
+    spec:
+      containers:
+        - name: container-lifters
+          image: image-lifters
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080

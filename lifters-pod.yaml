@@ -1,0 +1,14 @@
+apiVersion: v1
+
+kind: Pod
+
+metadata:
+  name: lifters-pod
+
+spec:
+  containers:
+    - image: lifters-image
+      name: lifters-container
+      imagePullPolicy: Never
+      ports:
+        - containerPort: 8080
