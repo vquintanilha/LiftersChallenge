@@ -1,15 +1,23 @@
+# Versão da API Kubernetes que vai ser usada
 apiVersion: v1
 
+# Tipo do objeto que vamos criar
 kind: Service
 
 metadata:
-  name: service-lifters
+  # Nome do objeto que estamos criando
+  name: lifters-service
   
 spec:
   selector:
-    app: app-lifters
+    # Referência ao pod que já existe
+    app: lifters-pod
   ports:
+      # Definição do protocolo IP para esta porta
     - protocol: "TCP"
+      # Porta que será exposta por esse serviço
       port: 8080
+      # Porta que será acessada dentro do pod
       targetPort: 8080
+  # Definição do tipo do serviço
   type: LoadBalancer

@@ -1,14 +1,22 @@
+# Versão da API Kubernetes que vai ser usada
 apiVersion: v1
 
+# Tipo do objeto que vamos criar
 kind: Pod
 
 metadata:
+  # Nome do objeto que estamos criando
   name: lifters-pod
 
 spec:
   containers:
+      # Aqui é o nome da imagem que será utilizada
     - image: lifters-image
+      # Definimos aqui qual será o nome do container
       name: lifters-container
+      # Este comando diz para o Docker não procurar
+      # a imagem externamente (no Docker Hub)
       imagePullPolicy: Never
       ports:
+          # Especificação de porta do container
         - containerPort: 8080

@@ -1,23 +1,34 @@
+# Versão da API Kubernetes que vai ser usada
 apiVersion: apps/v1
 
+# Tipo do objeto que vamos criar
 kind: Deployment
 
 metadata:
-  name: deployment-lifters
+  # Nome do objeto que estamos criando
+  name: lifters-deployment
   
 spec:
   selector:
     matchLabels:
-      app: app-lifters
+      # Referência ao pod que será criado/já existe
+      app: lifters-pod
+  # Número de pods que serão criados
   replicas: 1
   template:
     metadata:
       labels:
-        app: app-lifters
+        # Nome do(s) pod(s) que será/serão criado(s)
+        app: lifters-pod
     spec:
       containers:
-        - name: container-lifters
-          image: image-lifters
+          # Aqui é o nome da imagem que será utilizada
+        - image: lifters-image
+          # Definimos aqui qual será o nome do container
+          name: lifters-container
+          # Este comando diz para o Docker não procurar
+          # a imagem externamente (no Docker Hub)
           imagePullPolicy: Never
           ports:
+              # Especificação de porta do container
             - containerPort: 8080
